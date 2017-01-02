@@ -1,0 +1,51 @@
+{
+  "name": "universal-navigation",
+  "version": "1.0.0",
+  "description": "A small Helper to make navigation between pages writen in different frameworks easy",
+  "main": "index.js",
+  "scripts": {
+    "test": "browserify test.js | browser-run",
+    "test:watch": "nodemon -q -x npm test",
+    "build:example": "node_modules/.bin/webpack",
+    "build:watch": "nodemon -q -x npm run build:example --ignore example/dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcosBessega/Universal-Navigation.git"
+  },
+  "keywords": [
+    "Multiple",
+    "Frameworks",
+    "Navigation",
+    "App",
+    "React",
+    "Vue",
+    "Angular"
+  ],
+  "author": "Marcos V. Bessega <mvbessega8@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MarcosBessega/Universal-Navigation/issues"
+  },
+  "homepage": "https://github.com/MarcosBessega/Universal-Navigation#readme",
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "browser-run": "^3.3.0",
+    "browserify": "^13.1.1",
+    "css-loader": "^0.26.1",
+    "express": "^4.14.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "style-loader": "^0.13.1",
+    "tape": "^4.6.3",
+    "vue": "^2.1.8",
+    "vue-loader": "^10.0.2",
+    "vue-template-compiler": "^2.1.8",
+    "webpack": "^1.14.0"
+  },
+  "dependencies": {}
+}
