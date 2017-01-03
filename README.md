@@ -32,3 +32,7 @@
   Nav.link will return a function, that when called will call unmount of the current mounted module(if there is one) and call mount of the one you passed the name.
 
   You can check the example folder where i poorly tried to demonstrate how it works.
+
+## Running Tests
+
+  Start the test server(needed to serve the scripts we will be trying to load) with **npm run serve:test** and Run the Tests with **npm test**

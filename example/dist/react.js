@@ -68,7 +68,9 @@
 
 	var unmount = function unmount() {
 	  console.log("REACT UNMOUNTING");
-	  document.body.removeChild(document.getElementById('rootReact'));
+	  var element = document.getElementById('rootReact');
+	  (0, _reactDom.unmountComponentAtNode)(element);
+	  document.body.removeChild(element);
 	};
 
 	window.uNavPages.react = {

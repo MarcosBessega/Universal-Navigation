@@ -80,32 +80,36 @@
 	      _ref$styles = _ref.styles,
 	      styles = _ref$styles === undefined ? undefined : _ref$styles;
 
-	  console.log(app.uNavPages);
 	  if (!name) throw new Error("name is required");
 	  var self = this;
 	  return function (e) {
 	    if (e && e.preventDefault) e.preventDefault();
-	    self.mount({ name: name, scripts: scripts, styles: styles });
+	    return self.mount({ name: name, scripts: scripts, styles: styles });
 	  };
 	};
 
 	uNav.prototype.mount = function (page) {
 	  var _this = this;
 
-	  if (!this.mounted || page.name !== this.mounted.name) {
-	    this.handleStyles(page.styles, page.name);
-	    this.handleScripts(page.scripts, page.name).then(function () {
-	      if (!app.uNavPages[page.name]) throw new Error("Config Not Present in " + page.name);
-	      var mount = app.uNavPages[page.name].mount;
-	      var unmount = app.uNavPages[page.name].unmount;
-	      if (typeof mount !== "function" || typeof unmount !== "function") throw new Error("mount and unmount must be functions");
-	      if (_this.mounted) _this.mounted.unmount();
-	      page.mount = mount;
-	      page.unmount = unmount;
-	      mount();
-	      _this.mounted = page;
-	    });
-	  }
+	  return new Promise(function (resolve) {
+	    if (!_this.mounted || page.name !== _this.mounted.name) {
+	      _this.handleStyles(page.styles, page.name);
+	      _this.handleScripts(page.scripts, page.name).then(function () {
+	        if (!app.uNavPages[page.name]) throw new Error("Config Not Present in " + page.name);
+	        var mount = app.uNavPages[page.name].mount;
+	        var unmount = app.uNavPages[page.name].unmount;
+	        if (typeof mount !== "function" || typeof unmount !== "function") throw new Error("mount and unmount must be functions");
+	        if (_this.mounted) _this.mounted.unmount();
+	        page.mount = mount;
+	        page.unmount = unmount;
+	        mount();
+	        _this.mounted = page;
+	        resolve();
+	      });
+	    } else {
+	      resolve();
+	    }
+	  });
 	};
 
 	uNav.prototype.handleScripts = function (scripts, name) {

@@ -1,5 +1,5 @@
 import React from "react"
-import {render} from "react-dom"
+import {render, unmountComponentAtNode} from "react-dom"
 
 const mount = () => {
   console.log("REACT MOUNTING");
@@ -14,7 +14,9 @@ const mount = () => {
 
 const unmount = () => {
   console.log("REACT UNMOUNTING");
-  document.body.removeChild(document.getElementById('rootReact'))
+  const element = document.getElementById('rootReact')
+  unmountComponentAtNode(element)
+  document.body.removeChild(element)
 }
 
 window.uNavPages.react = {

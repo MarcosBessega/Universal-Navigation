@@ -7,7 +7,8 @@
     "test": "browserify test.js | browser-run",
     "test:watch": "nodemon -q -x npm test",
     "build:example": "node_modules/.bin/webpack",
-    "build:watch": "nodemon -q -x npm run build:example --ignore example/dist/"
+    "build:watch": "nodemon -q -x npm run build:example --ignore example/dist/",
+    "serve:test": "node server-test"
   },
   "repository": {
     "type": "git",
